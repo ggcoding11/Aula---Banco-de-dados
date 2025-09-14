@@ -39,10 +39,10 @@ CREATE TABLE produto_pedido(
 	idProduto INT NOT NULL,
     idPedido INT NOT NULL,
     
-    CONSTRAINT FOREIGN KEY(idProduto) REFERENCES produto(id),
-    CONSTRAINT FOREIGN KEY(idPedido) REFERENCES pedido(id),
+    PRIMARY KEY(idProduto, idPedido),
     
-    PRIMARY KEY(idProduto, idPedido)
+    CONSTRAINT FOREIGN KEY(idProduto) REFERENCES produto(id),
+    CONSTRAINT FOREIGN KEY(idPedido) REFERENCES pedido(id)
 );
 
 
