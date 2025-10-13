@@ -5,9 +5,9 @@ SELECT nome, preco FROM produtos; -- 3
 SELECT * FROM produtos WHERE preco > 1000; -- 4
 SELECT * FROM usuarios WHERE cidade = "Maringá"; -- 5
 SELECT * FROM produtos WHERE preco BETWEEN 500 AND 1500; -- 6
-SELECT * FROM produtos WHERE nome LIKE "Produto 1%"; -- 7
-SELECT * FROM produtos WHERE preco IS NULL;
-
+SELECT * FROM usuarios WHERE cidade NOT IN("Rio de Janeiro"); -- 7
+SELECT * FROM produtos WHERE nome LIKE "Produto 1%"; -- 8
+SELECT * FROM produtos WHERE preco IS NOT NULL; -- 9
 
 DROP DATABASE IF EXISTS escola_select;
 CREATE DATABASE escola_select;
