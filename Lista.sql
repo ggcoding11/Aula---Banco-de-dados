@@ -8,6 +8,29 @@ SELECT * FROM produtos WHERE preco BETWEEN 500 AND 1500; -- 6
 SELECT * FROM usuarios WHERE cidade NOT IN("Rio de Janeiro"); -- 7
 SELECT * FROM produtos WHERE nome LIKE "Produto 1%"; -- 8
 SELECT * FROM produtos WHERE preco IS NOT NULL; -- 9
+SELECT * FROM usuarios WHERE nome LIKE "%0"; -- 10
+
+SELECT * FROM produtos WHERE preco > 1000 AND preco < 2000; -- 11
+SELECT * FROM usuarios WHERE cidade IN ("Curitiba") OR cidade IN ("Londrina"); -- 12
+SELECT * FROM usuarios WHERE cidade NOT IN ("Florianópolis"); -- 13
+SELECT DISTINCT cidade FROM usuarios; -- 14
+SELECT * FROM produtos ORDER BY preco; -- 15
+SELECT * FROM produtos ORDER BY preco DESC; -- 16
+
+SELECT nome, preco*0.9 AS preco_com_desconto FROM produtos; -- 17
+SELECT nome, preco + 50 AS preco_final FROM produtos; -- 18
+SELECT nome, preco*2 AS preco_dobrado FROM produtos; -- 19
+
+SELECT nome, ROUND(preco, 1) AS preco FROM produtos; -- 20
+SELECT nome, MOD(preco, 100) FROM produtos; -- 21
+SELECT UPPER(nome) FROM produtos; -- 22
+SELECT LOWER(nome) FROM produtos; -- 23
+SELECT nome, LENGTH(nome) FROM produtos; -- 24
+SELECT nome FROM usuarios WHERE INSTR(nome, "a") <> 0 OR INSTR(nome, "A") <> 0; -- 25
+
+
+
+
 
 DROP DATABASE IF EXISTS escola_select;
 CREATE DATABASE escola_select;
