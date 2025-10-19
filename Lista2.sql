@@ -57,14 +57,45 @@ INSERT INTO funcionarios(nome, cargo, salario) VALUES ("Funcionario 4", "T.I", 2
 
 INSERT INTO funcionarios(nome, cargo) VALUES ("Funcionario 7", "Marketing");
 
+-- EXERCÍCIO 8 
 
+SELECT * FROM funcionarios;
 
+INSERT INTO funcionarios(id, nome, cargo, salario) VALUES (1, "Funcionario 1", "T.I", 2300.23);
 
+-- EXERCÍCIO 9
 
+DROP TABLE novos_produtos;
 
+CREATE TABLE novos_produtos(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    preco DECIMAL(10,2)
+);
 
+INSERT INTO novos_produtos(nome, preco) SELECT nome, preco FROM produtos;
 
+SELECT * FROM novos_produtos;
 
+-- EXERCÍCIO 10
+
+-- Deixa quieto, não tem essa tabela
+
+-- EXERCÍCIO 11
+
+UPDATE produtos SET preco = preco*1.10;
+
+-- EXERCÍCIO 12
+
+UPDATE clientes SET nome = "Maria Oliveira" WHERE id = 3;
+
+SELECT * FROM clientes;
+
+-- EXERCÍCIO 13
+
+SET GLOBAL sql_safe_updates=0;
+ 
+ UPDATE clientes SET cidade = "SP" WHERE estado IN("São Paulo");
 
 DROP DATABASE IF EXISTS escola_select;
 CREATE DATABASE escola_select;
