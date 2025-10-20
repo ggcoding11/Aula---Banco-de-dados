@@ -95,7 +95,29 @@ SELECT * FROM clientes;
 
 SET GLOBAL sql_safe_updates=0;
  
- UPDATE clientes SET cidade = "SP" WHERE estado IN("São Paulo");
+UPDATE clientes SET cidade = "SP" WHERE estado IN("São Paulo");
+
+-- EXERCÍCIO 21
+
+SELECT * FROM clientes;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM clientes WHERE cidade IN ("Curitiba");
+
+-- EXERCÍCIO 22
+
+SELECT * FROM produtos;
+
+DELETE FROM produtos WHERE preco = 0;
+
+-- EXERCÍCIO 23
+
+SELECT * FROM compras;
+
+DELETE FROM compras WHERE data_compra < "2020-01-01";
+
+-- EXERCÍCIO 25
 
 DROP DATABASE IF EXISTS escola_select;
 CREATE DATABASE escola_select;
