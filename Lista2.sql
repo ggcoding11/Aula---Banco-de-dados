@@ -1,123 +1,64 @@
--- EXERCÍCIO 1
+-- Ex1
+INSERT INTO usuarios(nome, email, cidade) VALUES ("Gustavo", "email@gmail.com", "Sarandi"),
+("Gustavo", "email@gmail.com", "Sarandi"), ("Gustavo", "email@gmail.com", "Sarandi"), ("Gustavo", "email@gmail.com", "Sarandi"),
+("Gustavo", "email@gmail.com", "Sarandi");
 
-CREATE TABLE clientes(
-	id INT AUTO_INCREMENT NOT NULL,
-    nome VARCHAR(100) NOT NULL,
-    cidade VARCHAR(200) NOT NULL,
-    estado VARCHAR(200) NOT NULL,
-    
-    PRIMARY KEY(id)
-);
+-- Ex2
+INSERT INTO modulos(nome) VALUES ("Cesumar");
+SELECT * FROM modulos;
 
-SELECT * FROM clientes;
+-- Ex8
+INSERT INTO modulos(id, nome) VALUES (1, "Finance");
 
-INSERT INTO clientes(nome, cidade, estado) VALUES ("Cliente 1", "Maringá", "Paraná"),
- ("Cliente 2", "Maringá", "Paraná"), 
- ("Cliente 3", "Maringá", "Paraná"), 
- ("Cliente 4", "Maringá", "Paraná"),
- ("Cliente 5", "Maringá", "Paraná");
-
--- EXERCÍCIO 2
-
-INSERT INTO clientes(nome, cidade, estado) VALUES 
-("João da Silva", "Curitiba", "Paraná");
-
--- EXERCÍCIO 3
-
-INSERT INTO produtos(nome, preco) VALUES ("P1", 124.35), 
-("P2", 1300.35), ("P3", 2300.35), ("P4", 1214.35);
-
-SELECT * FROM produtos;
-
--- EXERCÍCIO 4
-
-INSERT INTO produtos(nome, preco) VALUES ("P5", NULL);
-
--- EXERCÍCIO 5 
-
-CREATE TABLE funcionarios(
+-- Ex9
+CREATE TABLE modulos_novo(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(200),
-    cargo VARCHAR(100),
-    salario DECIMAL(10,2)
+    nome VARCHAR(5)
 );
 
-DROP TABLE funcionarios;
+DROP TABLE modulos_novo;
 
-INSERT INTO funcionarios(nome, cargo, salario) VALUES ("Funcionario 1", "T.I", 2300.23),
-("Funcionario 2", "T.I", 230.23),("Funcionario 3", "T.I", 123.23);
+INSERT INTO modulos_novo(id, nome) SELECT * FROM modulos;
 
-SELECT * FROM funcionarios;
+SELECT * FROM modulos_novo;
 
--- EXERCÍCIO 6
-
-INSERT INTO funcionarios(nome, cargo, salario) VALUES ("Funcionario 4", "T.I", 2300.23), ("Funcionario 6", "T.I", 1230);
-
--- EXERCÍCIO 7
-
-INSERT INTO funcionarios(nome, cargo) VALUES ("Funcionario 7", "Marketing");
-
--- EXERCÍCIO 8 
-
-SELECT * FROM funcionarios;
-
-INSERT INTO funcionarios(id, nome, cargo, salario) VALUES (1, "Funcionario 1", "T.I", 2300.23);
-
--- EXERCÍCIO 9
-
-DROP TABLE novos_produtos;
-
-CREATE TABLE novos_produtos(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100),
-    preco DECIMAL(10,2)
-);
-
-INSERT INTO novos_produtos(nome, preco) SELECT nome, preco FROM produtos;
-
-SELECT * FROM novos_produtos;
-
--- EXERCÍCIO 10
-
--- Deixa quieto, não tem essa tabela
-
--- EXERCÍCIO 11
-
-UPDATE produtos SET preco = preco*1.10;
-
--- EXERCÍCIO 12
-
-UPDATE clientes SET nome = "Maria Oliveira" WHERE id = 3;
-
-SELECT * FROM clientes;
-
--- EXERCÍCIO 13
-
-SET GLOBAL sql_safe_updates=0;
- 
-UPDATE clientes SET cidade = "SP" WHERE estado IN("São Paulo");
-
--- EXERCÍCIO 21
-
-SELECT * FROM clientes;
-
+-- Ex11
 SET SQL_SAFE_UPDATES = 0;
-
-DELETE FROM clientes WHERE cidade IN ("Curitiba");
-
--- EXERCÍCIO 22
-
+UPDATE produtos SET preco = ROUND(preco*1.10);
 SELECT * FROM produtos;
 
-DELETE FROM produtos WHERE preco = 0;
+-- Ex12
+UPDATE usuarios SET nome = "Maria Oliveira" WHERE id = 3;
+SELECT * FROM usuarios;
 
--- EXERCÍCIO 23
+-- Ex13
+UPDATE usuarios SET cidade = "London" WHERE cidade IN("Londrina");
 
+-- Ex15
+UPDATE produtos SET nome = "Caríssimo" WHERE preco > 1000;
+SELECT * FROM produtos;
+
+-- Ex16
+UPDATE produtos SET preco = NULL WHERE id >= 1 AND id < 4;
+UPDATE produtos SET nome = "Sem preço" WHERE preco IS NULL;
+
+-- Ex17
+UPDATE compras SET data_compra = current_timestamp() WHERE id >= 0 AND id < 5;
 SELECT * FROM compras;
 
-DELETE FROM compras WHERE data_compra < "2020-01-01";
+-- Ex18
+UPDATE compras SET data_compra = current_date() WHERE data_compra > "2025-03-01";
 
--- EXERCÍCIO 25
+-- Ex21
+DROP TABLE permissoes; 
+DROP TABLE itens_compra;
+DROP TABLE compras;
+
+DELETE FROM usuarios WHERE cidade = "London";
+
+SELECT * FROM usuarios;
+
+
 
 DROP DATABASE IF EXISTS escola_select;
 CREATE DATABASE escola_select;
@@ -155,6 +96,10 @@ CREATE TABLE compras (
     data_compra DATE,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
+
+DELETE FROM usuarios WHERE id 
+
+SELECT * FROM compras;
 
 CREATE TABLE itens_compra (
     id_compra INT,
